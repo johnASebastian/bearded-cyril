@@ -27,6 +27,7 @@ class Controller(object):
         Process(target=self.env.wait).start()
 
     def state(self, sender=None, state=None, **kwargs):
+        print "Got state change"
         zone = self.mappings.get(sender.name)
         if zone == None:
             return
