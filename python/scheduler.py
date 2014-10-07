@@ -1,15 +1,19 @@
 import ZoneManager 
 import sys
 import time
-#import wemo
+import wemo
 from sys import argv
 
-def motion_detected(state,zone):
-	print zone;
-	if state:
-		ZoneManager.turnZoneOn(zone)
-	else:
-		ZoneManager.turnZoneOff(zone)
+class Scheduler(object):
+	def __init__(self, zm):
+		self.zm = zm
+
+	def motion_detected(state,zone):
+		print zone;
+		if state:
+			self.zm.turnZoneOn(zone)
+		else:
+			self.zm.turnZoneOff(zone)
 
 def main():
 	f = open(sys.argv[1],"r")
@@ -20,23 +24,23 @@ def main():
 	#Start up Zonemaonager
 	zm = ZoneManager.ZoneManager()
 	#Start up Weemo thing
-#	wemo(self)
+	wemo.Controller(Scheduler(zm)).start()
 	#pass instance of this
 	while(True):
 		time.sleep(1)
-		print "sleep"
-		time.sleep(1)
-		zm.turnZoneOn(0)
-		zm.turnZoneOn(1)
-		time.sleep(1)
-		zm.turnZoneOn(2)
-		zm.turnZoneOn(3)
-		time.sleep(1)
-		zm.turnZoneOff(0)
-		zm.turnZoneOff(1)
-		time.sleep(1)
-		zm.turnZoneOff(2)
-		zm.turnZoneOff(3)
+	#	print "sleep"
+	#	time.sleep(1)
+	#	zm.turnZoneOn(0)
+	#	zm.turnZoneOn(1)
+	##	time.sleep(1)
+	#	zm.turnZoneOn(2)
+	#	zm.turnZoneOn(3)
+	#	time.sleep(1)
+	#	zm.turnZoneOff(0)
+	#	zm.turnZoneOff(1)
+	#	time.sleep(1)
+	#	zm.turnZoneOff(2)
+	#	zm.turnZoneOff(3)
 
 
 

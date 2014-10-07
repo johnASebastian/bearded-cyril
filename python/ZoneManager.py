@@ -5,6 +5,7 @@ class ZoneManager(object):
 	zones = [11,7,16,10]
 
 	def __init__ (self):
+		GPIO.cleanup()
 		GPIO.setmode(GPIO.BOARD)
 		for pin in self.zones:
 			GPIO.setup(pin, GPIO.OUT)
