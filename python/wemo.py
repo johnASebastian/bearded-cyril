@@ -24,7 +24,7 @@ class Controller(object):
         print "Discover stuff"
         self.env.discover(5)
         print "Wait for stuff"
-        self.env.wait()
+        Process(target=self.env.wait).start()
 
     def state(self, sender=None, state=None, **kwargs):
         zone = self.mappings.get(sender.name)
