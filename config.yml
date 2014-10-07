@@ -1,5 +1,5 @@
 zones:
-   -number: 1
+   -number: 0
     name: 'Front Lawn, Left'
     delay_trigger: WeMo Motion
     schedule:
@@ -11,7 +11,7 @@ zones:
       monday:
         -time: 0600
          duration: 30
-   -number: 2
+   -number: 1
     name: 'Front Lawn, Right'
     schedule:
       sunday:
