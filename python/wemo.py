@@ -6,17 +6,17 @@ from ouimeaux.signals import subscription, statechange
 
 class Controller(object):
 
+    mappings = {
+        "zone1": 0,
+        "zone2": 1,
+        "zone3": 2,
+        "zone4": 3
+    }
+
     def __init__(self, callback):
         self.callback = callback
-        self.env = Environment(
-            motion_callback=self.new_motion,
-            with_cache=False)
-        receiver(devicefound)(self.found)
+        self.env = Environment(with_cache=False)
         receiver(statechange)(self.state)
-
-    def new_motion(self, motion):
-        print "Found motion"
-        print motion
 
     def start(self):
         print "Starting environment"
@@ -26,13 +26,11 @@ class Controller(object):
         print "Wait for stuff"
         self.env.wait()
 
-    def found(self, **kwargs):
-        print "Discovered"
-        print kwargs
-
-    def state(self, **kwargs):
-        print "State Changed"
-        print kwargs
+    def state(self, sender=None, state=None, **kwargs):
+        zone = self.mappings.get(sender.name)
+        if zone == None:
+            return
+        self.callback.motion_detected(bool(state), zone)
 
 if __name__ == "__main__":
     print "Create controller"
