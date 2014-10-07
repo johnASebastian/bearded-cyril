@@ -1,0 +1,24 @@
+zones:
+   -number: 0
+    name: 'Front Lawn, Left'
+    delay_trigger: WeMo Motion
+    schedule:
+      sunday:
+        -time: 0600
+         duration: 30
+        -time: 2100
+         duration: 30
+      monday:
+        -time: 0600
+         duration: 30
+   -number: 1
+    name: 'Front Lawn, Right'
+    schedule:
+      sunday:
+        -time: 0600
+         duration: 30
+        -time: 2100
+         duration: 30
+      monday:
+        -time: 0600
+         duration: 30
