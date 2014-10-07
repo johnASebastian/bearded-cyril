@@ -4,10 +4,15 @@ import os
 _zones = []
 app = Bottle()
 
-@app.route("/static/<file>")
+path = os.getcwd() + "/static"
+
+@app.route("/")
+def index():
+    return static_file("index.html", root=path)
+
+@app.route("/static/<file:path>")
 def statics(file):
-    path = os.getcwd() + "/static"
-    return static_file(filename, root=path)
+    return static_file(file, root=path)
 
 @app.route("/zones")
 def zones():
@@ -38,7 +43,7 @@ def update_schedule(zone=None):
     _zones[zone].schedule = request.json
 
 def run():
-    app.run(debug=True, port=5000, reloader=True)
+    app.run(debug=True, host='0.0.0.0', port=5000, reloader=True)
 
 if __name__ == "__main__":
     _zones = 8 * [None]
