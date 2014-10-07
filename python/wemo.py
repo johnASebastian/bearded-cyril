@@ -33,7 +33,11 @@ class Controller(object):
         self.callback.motion_detected(bool(state), zone)
 
 if __name__ == "__main__":
+    class Tmp(object):
+        def motion_detected(self, state, zone):
+            print "Zone {} motion = {}".format(zone, state)
+
     print "Create controller"
-    ctrl = Controller(None)
+    ctrl = Controller(Tmp())
     print "Starting controller"
     ctrl.start()
