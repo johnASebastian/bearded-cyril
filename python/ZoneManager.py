@@ -3,8 +3,8 @@ import time
 
 class ZoneManager(object):
 	zones = [11,7,16,10]
-	
-	def setupZones(self):
+
+	def __init__ (self):
 		GPIO.setmode(GPIO.BOARD)
 		for pin in self.zones:
 			GPIO.setup(pin, GPIO.OUT)
