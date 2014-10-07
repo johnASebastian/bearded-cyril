@@ -6,14 +6,14 @@ class ZoneManager(object):
 
 	def __init__ (self):
 		GPIO.setmode(GPIO.BOARD)
-		for pin in zones:
+		for pin in self.zones:
 			GPIO.setup(pin, GPIO.OUT)
 
 	def turnZoneOn(self, zoneNumber):
-		GPIO.output(self.zone[zoneNumber], TRUE)
+		GPIO.output(self.zones[zoneNumber], True)
 
 	def turnZoneOff(self, zoneNumber):
-		GPIO.output(self.zone[zoneNumebr], FALSE)
+		GPIO.output(self.zones[zoneNumber], False)
 
 
 
