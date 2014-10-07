@@ -24,7 +24,7 @@ class Controller(object):
         print "Discover stuff"
         self.env.discover(5)
         print "Wait for stuff"
-        self.env.wait()
+        Process(target=self.env.wait).start()
 
     def state(self, sender=None, state=None, **kwargs):
         zone = self.mappings.get(sender.name)
@@ -33,7 +33,11 @@ class Controller(object):
         self.callback.motion_detected(bool(state), zone)
 
 if __name__ == "__main__":
+    class Tmp(object):
+        def motion_detected(self, state, zone):
+            print "Zone {} motion = {}".format(zone, state)
+
     print "Create controller"
-    ctrl = Controller(None)
+    ctrl = Controller(Tmp())
     print "Starting controller"
     ctrl.start()
