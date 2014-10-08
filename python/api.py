@@ -4,10 +4,14 @@ import os
 _zones = []
 app = Bottle()
 zm = None
+path = os.getcwd() + "/static"
 
-@app.route("/static/<file>")
+@app.route("/")
+def index():
+    return static_file("index.html", root=path)
+
+@app.route("/static/<file:path>")
 def statics(file):
-    path = os.getcwd() + "/static"
     return static_file(filename, root=path)
 
 @app.route("/zones")
@@ -54,7 +58,7 @@ def delay(zone):
     zm.delay(zone, request.query.duration or 5)
 
 def run():
-    app.run(debug=True, port=5000, reloader=True)
+    app.run(debug=True, host='0.0.0.0' port=5000, reloader=True)
 
 if __name__ == "__main__":
     import yaml
