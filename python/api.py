@@ -12,7 +12,7 @@ def index():
 
 @app.route("/static/<file:path>")
 def statics(file):
-    return static_file(filename, root=path)
+    return static_file(file, root=path)
 
 @app.route("/zones")
 def zones():
@@ -63,7 +63,7 @@ def run():
 if __name__ == "__main__":
     import yaml
     print "loading config"
-    config = yaml.load(open("config.yml"))    
+    config = yaml.load(open("config.yml"))
     print "config", config
     _zones = config['available'] * [None]
     for zone in config['zones']:
