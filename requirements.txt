@@ -1,0 +1,12 @@
+RPi.GPIO==0.5.5
+argparse==1.2.1
+bottle==0.12.7
+## FIXME: could not find svn URL in dependency_links for this package:
+distribute==0.6.24dev-r0
+numpy==1.6.2
+picamera==1.5
+pifacecommon==4.0.0
+pifacedigitalio==3.0.4
+pygame==1.9.1release
+pyserial==2.5
+wsgiref==0.1.2
