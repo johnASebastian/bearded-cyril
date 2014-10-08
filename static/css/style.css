@@ -1,1 +1,33 @@
 /* Styles */
+
+body {
+	font-size: 1.5em;
+}
+
+h1 {
+	text-align: center;
+}
+
+div.container {
+	width: 450px;
+	border: 1px solid #ddd;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+div.zone {
+}
+div.zone p {
+	margin: 0px;
+	line-height: 39px;
+	display: inline;
+}
+div.zone div.actions {
+	float: right;
+	display: inline
+}
+
+button {
+	border: 1px solid #ddd;
+	font-size: 1em;
+}
